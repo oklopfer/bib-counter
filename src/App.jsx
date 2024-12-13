@@ -4,8 +4,7 @@ import './output.css';
 
 function App() {
   return (
-    <div className="app">
-      <h1 className="mt-8 mx-auto text-center">Biblical Word Count Analyzer</h1>
+    <div className="container mx-auto app">
       <Analyzer />
     </div>
   );

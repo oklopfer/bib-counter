@@ -26,14 +26,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -73,9 +65,11 @@ button:focus-visible {
   .ident {
     @apply text-center !important;
   }
+  .toggle-button {
+    @apply text-sm !important;
+  }
 }
 
-/* Highlight styles */
 .highlight-ot {
   @apply text-blue-500;
 }
@@ -104,7 +98,6 @@ button:focus-visible {
   @apply text-pink-500;
 }
 
-/* Disable highlight styles */
 .disable-highlight-ot .highlight-ot,
 .disable-highlight-nt .highlight-nt,
 .disable-highlight-ap .highlight-ap,
@@ -115,12 +108,10 @@ button:focus-visible {
   @apply text-inherit font-normal !important;
 }
 
-/* Button base style */
 .toggle-button {
-  @apply py-2 px-3 m-1 text-white rounded cursor-pointer;
+  @apply py-2 px-3 m-1 text-white rounded-lg cursor-pointer;
 }
 
-/* Highlight button colors */
 .button-ot {
   @apply bg-blue-600 border-blue-600 rounded-lg border-2;
 }
@@ -149,7 +140,6 @@ button:focus-visible {
   @apply bg-pink-600 border-pink-600 rounded-lg border-2;
 }
 
-/* Button hover effects */
 .button-ot:hover,
 .button-nt:hover,
 .button-ap:hover,
@@ -170,7 +160,6 @@ button:focus-visible {
   @apply bg-opacity-35;
 }
 
-/* Button focus effects */
 button:focus {
   @apply outline-none;
 }
@@ -187,7 +176,6 @@ button:not(:disabled):active {
   @apply transform translate-y-[0.125rem];
 }
 
-/* Disabled button styles */
 .disable-btn-ot,
 .disable-btn-nt,
 .disable-btn-ap,

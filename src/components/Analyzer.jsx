@@ -27,16 +27,6 @@ const Analyzer = () => {
     all: 'All Sources',
   };
 
-  const buttonClasses = {
-    ot: 'button-ot',
-    nt: 'button-nt',
-    ap: 'button-ap',
-    otNt: 'button-otNt',
-    otAp: 'button-otAp',
-    ntAp: 'button-ntAp',
-    all: 'button-all',
-  };
-
   useEffect(() => {
     fetch('/bible_word_frequencies.csv')
       .then(response => response.text())
@@ -80,8 +70,9 @@ const Analyzer = () => {
     const allWords = new Set();
 
     words.forEach(word => {
-      if (word in wordData && !biblicalWordsUsed.has(word)) {
-        const { ot, nt, apocrypha } = wordData[word];
+      const lowerWord = word.replace(/['"]/g, '').toLowerCase();
+      if (lowerWord in wordData && !biblicalWordsUsed.has(lowerWord)) {
+        const { ot, nt, apocrypha } = wordData[lowerWord];
         const inOt = ot > 0;
         const inNt = nt > 0;
         const inApocrypha = apocrypha > 0;
@@ -90,23 +81,23 @@ const Analyzer = () => {
         if (inNt) ntCount++;
         if (inApocrypha) apocryphaCount++;
 
-        if (inOt && !inNt && !inApocrypha) otOnlyWords.add(word);
-        if (inNt && !inOt && !inApocrypha) ntOnlyWords.add(word);
-        if (inApocrypha && !inOt && !inNt) apocryphaOnlyWords.add(word);
-        if (inOt && inNt && !inApocrypha) otNtWords.add(word);
-        if (inOt && inApocrypha && !inNt) otApocryphaWords.add(word);
-        if (inNt && inApocrypha && !inOt) ntApocryphaWords.add(word);
-        if (inOt && inNt && inApocrypha) allWords.add(word);
+        if (inOt && !inNt && !inApocrypha) otOnlyWords.add(lowerWord);
+        if (inNt && !inOt && !inApocrypha) ntOnlyWords.add(lowerWord);
+        if (inApocrypha && !inOt && !inNt) apocryphaOnlyWords.add(lowerWord);
+        if (inOt && inNt && !inApocrypha) otNtWords.add(lowerWord);
+        if (inOt && inApocrypha && !inNt) otApocryphaWords.add(lowerWord);
+        if (inNt && inApocrypha && !inOt) ntApocryphaWords.add(lowerWord);
+        if (inOt && inNt && inApocrypha) allWords.add(lowerWord);
 
         totalBiblicalCount++;
-        biblicalWordsUsed.add(word);
+        biblicalWordsUsed.add(lowerWord);
       }
     });
 
     const getPct = (num) => ((num / totalWords) * 100).toFixed(2);
 
     const highlightWord = (word) => {
-      const lowerWord = word.toLowerCase();
+      const lowerWord = word.replace(/['"]/g, '').toLowerCase();
       if (otOnlyWords.has(lowerWord)) return `<span class="highlight-ot">${word}</span>`;
       if (ntOnlyWords.has(lowerWord)) return `<span class="highlight-nt">${word}</span>`;
       if (apocryphaOnlyWords.has(lowerWord)) return `<span class="highlight-ap">${word}</span>`;
@@ -141,7 +132,8 @@ const Analyzer = () => {
   };
 
   return (
-    <div className="p-4 mx-8">
+    <div className="p-4 mx-8 justify-center">
+      <h1 className="my-8 mx-auto text-center">Biblical Word Count Analyzer</h1>
       <textarea
         rows="5"
         placeholder="Enter your text here..."
@@ -187,38 +179,37 @@ const Analyzer = () => {
             dangerouslySetInnerHTML={{ __html: highlightedText }}
           />
           <div className="grid grid-cols-2 gap-4 max-w-[80%] mx-auto my-4">
-            <div className="flex flex-col items-center gap-2">
-              {['ot', 'nt', 'ap'].map((category) => (
-                <button
-                  key={category}
-                  className={`toggle-button ${buttonClasses[category]} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full`}
-                  onClick={() => toggleClass(category)}
-                >
-                  {toggles[category] ? `${categoryNames[category]} (on)` : `${categoryNames[category]} (off)`}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex flex-col items-center gap-2">
-              {['otNt', 'otAp', 'ntAp'].map((category) => (
-                <button
-                  key={category}
-                  className={`toggle-button ${buttonClasses[category]} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full`}
-                  onClick={() => toggleClass(category)}
-                >
-                  {toggles[category] ? `${categoryNames[category]} (on)` : `${categoryNames[category]} (off)`}
-                </button>
-              ))}
-            </div>
-
-            <div className="col-span-2 flex justify-center">
+            <div className="col-span-2 flex justify-center gap-2">
               <button
                 key="all"
-                className={`toggle-button ${buttonClasses.all} ${!toggles.all ? 'disable-btn-all' : ''} w-1/2`}
+                className={`toggle-button button-all ${!toggles.all ? 'disable-btn-all' : ''} w-1/2`}
                 onClick={() => toggleClass('all')}
               >
                 {toggles.all ? `${categoryNames.all} (on)` : `${categoryNames.all} (off)`}
               </button>
+            </div>
+            <div className="flex flex-col justify-center gap-2">
+              {['ot', 'nt', 'ap'].map((category) => (
+                <button
+                  key={category}
+                  className={`toggle-button button-${category} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full`}
+                  onClick={() => toggleClass(category)}
+                >
+                  {toggles[category] ? `${categoryNames[category]} (on)` : `${categoryNames[category]} (off)`}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex flex-col justify-center gap-2">
+              {['otNt', 'otAp', 'ntAp'].map((category) => (
+                <button
+                  key={category}
+                  className={`toggle-button button-${category} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full`}
+                  onClick={() => toggleClass(category)}
+                >
+                  {toggles[category] ? `${categoryNames[category]} (on)` : `${categoryNames[category]} (off)`}
+                </button>
+              ))}
             </div>
           </div>
         </div>
