@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@media (max-width: 703px) {
+  .ident {
+    @apply text-center !important;
+  }
+}
+
+/* Highlight styles */
+.highlight-ot {
+  @apply text-blue-500;
+}
+
+.highlight-nt {
+  @apply text-red-500;
+}
+
+.highlight-ap {
+  @apply text-yellow-500;
+}
+
+.highlight-otNt {
+  @apply text-purple-500;
+}
+
+.highlight-otAp {
+  @apply text-green-500;
+}
+
+.highlight-ntAp {
+  @apply text-orange-500;
+}
+
+.highlight-all {
+  @apply text-pink-500;
+}
+
+/* Disable highlight styles */
+.disable-highlight-ot .highlight-ot,
+.disable-highlight-nt .highlight-nt,
+.disable-highlight-ap .highlight-ap,
+.disable-highlight-otNt .highlight-otNt,
+.disable-highlight-otAp .highlight-otAp,
+.disable-highlight-ntAp .highlight-ntAp,
+.disable-highlight-all .highlight-all {
+  @apply text-inherit font-normal !important;
+}
+
+/* Button base style */
+.toggle-button {
+  @apply py-2 px-3 m-1 text-white rounded cursor-pointer;
+}
+
+/* Highlight button colors */
+.button-ot {
+  @apply bg-blue-600 border-blue-600 rounded-lg border-2;
+}
+
+.button-nt {
+  @apply bg-red-600 border-red-600 rounded-lg border-2;
+}
+
+.button-ap {
+  @apply bg-yellow-500 text-black border-yellow-500 rounded-lg border-2;
+}
+
+.button-otNt {
+  @apply bg-purple-600 border-purple-600 rounded-lg border-2;
+}
+
+.button-otAp {
+  @apply bg-green-600 border-green-600 rounded-lg border-2;
+}
+
+.button-ntAp {
+  @apply bg-orange-500 border-orange-500 rounded-lg border-2;
+}
+
+.button-all {
+  @apply bg-pink-600 border-pink-600 rounded-lg border-2;
+}
+
+/* Button hover effects */
+.button-ot:hover,
+.button-nt:hover,
+.button-ap:hover,
+.button-otNt:hover,
+.button-otAp:hover,
+.button-ntAp:hover,
+.button-all:hover {
+  @apply bg-opacity-65;
+}
+
+.disable-btn-ot:hover,
+.disable-btn-nt:hover,
+.disable-btn-ap:hover,
+.disable-btn-otNt:hover,
+.disable-btn-otAp:hover,
+.disable-btn-ntAp:hover,
+.disable-btn-all:hover {
+  @apply bg-opacity-35;
+}
+
+/* Button focus effects */
+button:focus {
+  @apply outline-none;
+}
+
+button:focus:before {
+  @apply content-[''] absolute top-[-0.375rem] left-[-0.375rem];
+}
+
+button:focus:not(:focus-visible) {
+  @apply outline-none;
+}
+
+button:not(:disabled):active {
+  @apply transform translate-y-[0.125rem];
+}
+
+/* Disabled button styles */
+.disable-btn-ot,
+.disable-btn-nt,
+.disable-btn-ap,
+.disable-btn-otNt,
+.disable-btn-otAp,
+.disable-btn-ntAp,
+.disable-btn-all {
+  @apply bg-opacity-0 text-inherit border-2 rounded-lg;
+}
