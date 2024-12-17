@@ -134,6 +134,12 @@ function Analyzer() {
   return (
     <div className="p-4 mx-8 justify-center dark:text-white text-black">
       <h1 className="my-8 mx-auto text-center">Biblical Word Count Analyzer</h1>
+      <p className="mb-2 mx-auto text-center">
+        Has a sentence ever made you think: <i>wow, none of these words are in the Bible</i>?
+      </p>
+      <p className="mb-8 mt-2 mx-auto text-center">
+        Well now you can check exactly how many of them are.
+      </p>
       <textarea
         rows="5"
         placeholder="Enter your text here..."
@@ -156,13 +162,13 @@ function Analyzer() {
           <div className="flex justify-center">
             <div className="flex flex-wrap gap-2 justify-center mx-auto text-center">
               <div className="flex-1 min-w-[300px] text-left ident">
-                <p><strong>Unique Words:</strong> {result.totalWords} ({result.preTotal} Overall)</p>
-                <p><strong>Old Testament Words:</strong> {result.otCount} ({result.pctOt}%)</p>
-                <p><strong>New Testament Words:</strong> {result.ntCount} ({result.pctNt}%)</p>
-                <p><strong>Apocrypha Words:</strong> {result.apocryphaCount} ({result.pctApocrypha}%)</p>
+                <p><b>Unique Words:</b> {result.totalWords} ({result.preTotal} Overall)</p>
+                <p><b>Old Testament Words:</b> {result.otCount} ({result.pctOt}%)</p>
+                <p><b>New Testament Words:</b> {result.ntCount} ({result.pctNt}%)</p>
+                <p><b>Apocrypha Words:</b> {result.apocryphaCount} ({result.pctApocrypha}%)</p>
               </div>
               <div className="flex-1 min-w-[300px] text-right ident">
-                <p className="text-lg font-bold"><strong>Total Biblical Words:</strong> {result.totalBiblicalCount}</p>
+                <p className="text-lg font-bold"><b>Total Biblical Words:</b> {result.totalBiblicalCount}</p>
                 <p className="font-semibold">Your text is {result.pctBiblical}% biblical.</p>
               </div>
             </div>

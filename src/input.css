@@ -75,7 +75,7 @@ button:focus-visible {
 }
 
 .highlight-nt {
-  @apply text-red-500;
+  @apply text-[#ff2929];
 }
 
 .highlight-ap {

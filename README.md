@@ -1,6 +1,8 @@
 # Biblical Word Count Analyzer
 
-Ever looked at a sentence and said, "wow, none of those words are in the Bible"? Well now you can check exactly how many of them are.
+Has a sentence ever made you think: *wow, none of these words are in the Bible*?
+
+Well now you can check exactly how many of them are.
 
 Link: https://bib-counter.vercel.app
 
