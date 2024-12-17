@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 
-const Analyzer = () => {
+function Analyzer() {
   const [csvData, setCsvData] = useState([]);
   const [inputText, setInputText] = useState('');
   const [result, setResult] = useState(null);
@@ -132,7 +132,7 @@ const Analyzer = () => {
   };
 
   return (
-    <div className="p-4 mx-8 justify-center">
+    <div className="p-4 mx-8 justify-center dark:text-white text-black">
       <h1 className="my-8 mx-auto text-center">Biblical Word Count Analyzer</h1>
       <textarea
         rows="5"
@@ -151,7 +151,7 @@ const Analyzer = () => {
       </div>
 
       {result && (
-        <div className="mt-6">
+        <div className="mt-2">
           <h3 className="text-xl font-bold mb-4 flex justify-center underline">Results</h3>
           <div className="flex justify-center">
             <div className="flex flex-wrap gap-2 justify-center mx-auto text-center">
@@ -172,7 +172,7 @@ const Analyzer = () => {
             <p className="mb-4">{result.biblicalWordsUsed}</p>
           </div>
           <div
-            className={`border p-4 rounded ${Object.entries(toggles)
+            className={`border border-gray-300 p-4 rounded ${Object.entries(toggles)
               .filter(([_, isEnabled]) => !isEnabled)
               .map(([category]) => `disable-highlight-${category}`)
               .join(' ')}`}
@@ -182,7 +182,7 @@ const Analyzer = () => {
             <div className="col-span-2 flex justify-center gap-2">
               <button
                 key="all"
-                className={`toggle-button button-all ${!toggles.all ? 'disable-btn-all' : ''} w-1/2`}
+                className={`toggle-button button-all ${!toggles.all ? 'disable-btn-all' : ''} w-1/2 flex-1/2`}
                 onClick={() => toggleClass('all')}
               >
                 {toggles.all ? `${categoryNames.all} (on)` : `${categoryNames.all} (off)`}
@@ -192,7 +192,7 @@ const Analyzer = () => {
               {['ot', 'nt', 'ap'].map((category) => (
                 <button
                   key={category}
-                  className={`toggle-button button-${category} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full`}
+                  className={`toggle-button button-${category} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full flex-1`}
                   onClick={() => toggleClass(category)}
                 >
                   {toggles[category] ? `${categoryNames[category]} (on)` : `${categoryNames[category]} (off)`}
@@ -204,7 +204,7 @@ const Analyzer = () => {
               {['otNt', 'otAp', 'ntAp'].map((category) => (
                 <button
                   key={category}
-                  className={`toggle-button button-${category} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full`}
+                  className={`toggle-button button-${category} ${!toggles[category] ? `disable-btn-${category}` : ''} w-full flex-1`}
                   onClick={() => toggleClass(category)}
                 >
                   {toggles[category] ? `${categoryNames[category]} (on)` : `${categoryNames[category]} (off)`}
