@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="container mx-auto app bg-white dark:bg-[#242424]">
       <Analyzer />
-      <footer className="mt-4 flex w-full flex-col flex-wrap items-center justify-center gap-y-2 gap-x-12 border-blue-gray-50 text-center dark:text-white text-black transition-all">
+      <footer className="mt-4 flex w-full flex-col flex-wrap items-center justify-center gap-y-2 gap-x-12 border-blue-gray-50 text-center dark:text-white text-black transition-all mb-4">
         <div className="flex flex-row items-center justify-center">
           <a href="https://github.com/oklopfer/bib-counter" target="_blank" rel="noreferrer" className="dark:fill-white hover:fill-blue-500 transition-all mx-4">
               <svg width="30" height="30" viewBox="3 3 18 18">
